@@ -1,0 +1,2500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zakaria — Fashion Designer & Tech Pack Specialist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #080808;
+      --white: #f5f4f0;
+      --gray: #1a1a1a;
+      --mid: #2e2e2e;
+      --muted: #6b6b6b;
+      --line: rgba(255,255,255,0.08);
+      --accent: #e8e4dc;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      font-size: 15px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px;
+      height: 64px;
+      background: rgba(8,8,8,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-logo {
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 36px; }
+    .nav-links a {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      background: var(--white);
+      color: var(--black);
+      padding: 9px 20px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      transition: background .2s, color .2s;
+    }
+    .nav-cta:hover { background: var(--accent); }
+
+    /* ─── HERO ────────────────────────────────────────── */
+    #hero {
+      height: 100vh; min-height: 640px;
+      display: flex; flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 48px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      display: grid; grid-template-columns: repeat(6,1fr);
+      gap: 2px; opacity: .12; pointer-events: none;
+    }
+    .hero-bg-img {
+      width: 100%; height: 100%;
+      object-fit: cover; filter: grayscale(100%);
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 820px; }
+    .hero-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    h1 {
+      font-size: clamp(44px, 7vw, 96px);
+      font-weight: 700;
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      margin-bottom: 28px;
+    }
+    h1 em {
+      font-style: normal;
+      color: transparent;
+      -webkit-text-stroke: 1px var(--white);
+    }
+    .hero-sub {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 480px;
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-block;
+      padding: 14px 32px;
+      background: var(--white);
+      color: var(--black);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background .2s, color .2s;
+    }
+    .btn-primary:hover { background: var(--accent); }
+    .btn-ghost {
+      display: inline-block;
+      padding: 14px 32px;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: border-color .2s, color .2s;
+    }
+    .btn-ghost:hover { border-color: var(--white); }
+    .hero-scroll {
+      position: absolute; bottom: 40px; right: 48px;
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      writing-mode: vertical-rl;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .hero-scroll::before {
+      content: ''; display: block;
+      width: 1px; height: 48px;
+      background: var(--muted);
+    }
+
+    /* ─── SECTION BASE ────────────────────────────────── */
+    section { padding: 96px 48px; }
+    .section-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 48px;
+    }
+    .section-title em {
+      font-style: normal;
+      color: transparent;
+      -webkit-text-stroke: 1px var(--white);
+    }
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--line);
+      margin: 0;
+    }
+
+    /* ─── SERVICES ────────────────────────────────────── */
+    #services { background: var(--gray); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+    .service-card {
+      background: var(--gray);
+      padding: 40px 32px;
+      transition: background .2s;
+    }
+    .service-card:hover { background: var(--mid); }
+    .service-num {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+    .service-name {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+    .service-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+    /* ─── ABOUT ──────────────────────────────────────── */
+    #about {
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .about-photo-wrap {
+      position: relative;
+      align-self: start;
+      width: 100%;
+    }
+    .about-photo {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-width: 420px;
+      filter: grayscale(8%);
+      transition: filter .4s;
+    }
+    .about-photo:hover { filter: grayscale(0%); }
+    .about-photo-frame {
+      position: absolute;
+      inset: 0;
+      border: 1px solid var(--line);
+      pointer-events: none;
+      transform: translate(10px, 10px);
+    }
+    .about-text { }
+    .about-tagline {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .about-heading {
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 28px;
+    }
+    .about-heading em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--muted);
+    }
+    .about-bio {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 20px;
+      max-width: 520px;
+    }
+    .about-bio strong { color: var(--white); font-weight: 600; }
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      border: 1px solid var(--line);
+      background: var(--line);
+      margin: 36px 0;
+    }
+    .about-stat {
+      background: var(--black);
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .about-stat-num {
+      font-family: 'Space Mono', monospace;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .about-stat-label {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .about-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 36px;
+    }
+    .about-skill {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid var(--line);
+      padding: 7px 14px;
+      color: var(--muted);
+      transition: color .2s, border-color .2s;
+    }
+    .about-skill:hover {
+      color: var(--white);
+      border-color: rgba(255,255,255,0.3);
+    }
+    .about-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--white);
+      color: var(--black);
+      padding: 16px 32px;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: opacity .2s;
+    }
+    .about-cta:hover { opacity: 0.85; }
+    /* monogram fallback */
+    .about-monogram {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: var(--gray);
+      border: 1px solid var(--line);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      position: relative;
+    }
+    .about-monogram::before {
+      content: '';
+      position: absolute;
+      inset: 16px;
+      border: 1px solid var(--line);
+      pointer-events: none;
+    }
+    .about-monogram-letter {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 96px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: var(--white);
+      opacity: 0.12;
+    }
+    .about-monogram-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      text-transform: uppercase;
+    }
+    .about-monogram-role {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+    @media (max-width: 900px) {
+      #about {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+      .about-photo-wrap { max-width: 320px; }
+      .about-stats { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .about-stats { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ─── SEARCH BAR ──────────────────────────────────── */
+    .search-wrap {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 32px;
+      align-items: center;
+    }
+    .search-input {
+      flex: 1;
+      background: var(--gray);
+      border: 1px solid var(--line);
+      color: var(--white);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      padding: 12px 20px;
+      outline: none;
+      transition: border-color .2s;
+      max-width: 420px;
+    }
+    .search-input::placeholder { color: var(--muted); }
+    .search-input:focus { border-color: rgba(255,255,255,0.3); }
+    .search-count {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+    .tp-no-results {
+      display: none;
+      grid-column: 1/-1;
+      padding: 48px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* ─── TECH PACKS ──────────────────────────────────── */
+    #techpacks { background: var(--black); }
+    .tp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2px;
+    }
+    .tp-card {
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+      background: var(--gray);
+      aspect-ratio: 4/3;
+    }
+    .tp-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .5s cubic-bezier(.25,.46,.45,.94), filter .4s;
+      filter: grayscale(20%);
+    }
+    .tp-card:hover img { transform: scale(1.04); filter: grayscale(0%); }
+    .tp-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.88) 0%, rgba(0,0,0,.2) 50%, transparent 100%);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 24px;
+      transition: opacity .3s;
+    }
+    .tp-cat {
+      font-family: 'Space Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.5);
+      margin-bottom: 6px;
+    }
+    .tp-name {
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 4px;
+    }
+    .tp-pages {
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .tp-view-btn {
+      position: absolute; top: 16px; right: 16px;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: var(--white);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 7px 14px;
+      opacity: 0;
+      transition: opacity .3s;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .tp-card:hover .tp-view-btn { opacity: 1; }
+
+    /* ─── CLOTHING DESIGN ─────────────────────────────── */
+    #clothing { background: var(--gray); }
+    .filter-tabs {
+      display: flex; gap: 2px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+    .filter-tab {
+      padding: 9px 20px;
+      background: transparent;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-family: 'Space Grotesk', sans-serif;
+      transition: all .2s;
+    }
+    .filter-tab.active, .filter-tab:hover {
+      background: var(--white);
+      color: var(--black);
+      border-color: var(--white);
+    }
+    .clothing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 2px;
+    }
+    .clothing-item {
+      position: relative;
+      aspect-ratio: 1;
+      overflow: hidden;
+      background: var(--mid);
+      cursor: pointer;
+    }
+    .clothing-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .45s cubic-bezier(.25,.46,.45,.94);
+    }
+    .clothing-item:hover img { transform: scale(1.06); }
+    .clothing-item.hidden { display: none; }
+    .clothing-item.deferred { visibility: hidden; }
+    .load-more-wrap {
+      text-align: center;
+      margin-top: 32px;
+    }
+    .btn-load-more {
+      display: inline-block;
+      padding: 13px 36px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--white);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background .2s, border-color .2s;
+    }
+    .btn-load-more:hover { background: var(--white); color: var(--black); border-color: var(--white); }
+    .btn-load-more:disabled { opacity: .3; cursor: default; }
+    .clothing-item-label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 8px 12px;
+      background: linear-gradient(to top, rgba(0,0,0,.75), transparent);
+      font-size: 11px;
+      color: rgba(255,255,255,.7);
+      opacity: 0;
+      transition: opacity .3s;
+    }
+    .clothing-item:hover .clothing-item-label { opacity: 1; }
+
+    /* ─── BRAND IDENTITY ──────────────────────────────── */
+    #brand { background: var(--black); }
+    .brand-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 2px;
+    }
+    .brand-card {
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+      background: var(--gray);
+    }
+    .brand-cover {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      display: block;
+      transition: transform .5s cubic-bezier(.25,.46,.45,.94);
+      filter: grayscale(15%);
+    }
+    .brand-card:hover .brand-cover { transform: scale(1.04); filter: grayscale(0%); }
+    .brand-info {
+      padding: 20px 24px;
+      background: var(--gray);
+      border-top: 1px solid var(--line);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .brand-title { font-size: 15px; font-weight: 600; }
+    .brand-page-count {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+    .brand-arrow {
+      width: 32px; height: 32px;
+      border: 1px solid var(--line);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px;
+      transition: background .2s, border-color .2s;
+    }
+    .brand-card:hover .brand-arrow {
+      background: var(--white);
+      border-color: var(--white);
+      color: var(--black);
+    }
+
+    /* ─── LOGO DESIGN ─────────────────────────────────── */
+    #logos { background: var(--gray); }
+    .logo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2px;
+    }
+    .logo-card {
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+      background: var(--mid);
+      aspect-ratio: 4/3;
+    }
+    .logo-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .45s cubic-bezier(.25,.46,.45,.94), filter .4s;
+      filter: grayscale(10%);
+    }
+    .logo-card:hover img { transform: scale(1.05); filter: grayscale(0%); }
+    .logo-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.8) 0%, transparent 60%);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 20px;
+    }
+    .logo-type {
+      font-family: 'Space Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.45);
+      margin-bottom: 4px;
+    }
+    .logo-name { font-size: 16px; font-weight: 600; }
+
+    /* ─── CTA SECTION ─────────────────────────────────── */
+    #cta {
+      background: var(--white);
+      color: var(--black);
+      padding: 96px 48px;
+      text-align: center;
+    }
+    .cta-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 16px;
+    }
+    .cta-title {
+      font-size: clamp(32px, 5vw, 64px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      color: var(--black);
+    }
+    .cta-sub {
+      font-size: 15px;
+      color: #666;
+      max-width: 480px;
+      margin: 0 auto 40px;
+    }
+    .btn-dark {
+      display: inline-block;
+      padding: 16px 40px;
+      background: var(--black);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background .2s;
+    }
+    .btn-dark:hover { background: #222; }
+
+    /* ─── FOOTER ──────────────────────────────────────── */
+    footer {
+      padding: 32px 48px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-logo {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .footer-note {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* ─── TECH PACK MODAL ─────────────────────────────── */
+    #tp-modal {
+      display: none;
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(0,0,0,0.97);
+      flex-direction: column;
+    }
+    #tp-modal.open { display: flex; }
+    .modal-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 32px;
+      height: 60px;
+      border-bottom: 1px solid var(--line);
+      flex-shrink: 0;
+    }
+    .modal-title {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+    .modal-meta {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      margin-left: 16px;
+    }
+    .modal-close {
+      width: 40px; height: 40px;
+      background: transparent;
+      border: 1px solid var(--line);
+      color: var(--white);
+      font-size: 18px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s;
+      line-height: 1;
+    }
+    .modal-close:hover { background: var(--gray); }
+    .modal-body {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+    }
+    .modal-main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .modal-img-wrap {
+      max-width: 860px;
+      width: 100%;
+      max-height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #modal-current-img {
+      max-width: 100%;
+      max-height: calc(100vh - 200px);
+      object-fit: contain;
+      display: block;
+      transition: opacity .25s;
+    }
+    .modal-nav {
+      position: absolute;
+      top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--line);
+      color: var(--white);
+      width: 44px; height: 64px;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s;
+    }
+    .modal-nav:hover { background: rgba(255,255,255,0.12); }
+    #modal-prev { left: 16px; }
+    #modal-next { right: 16px; }
+    .modal-sidebar {
+      width: 160px;
+      border-left: 1px solid var(--line);
+      overflow-y: auto;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .modal-sidebar::-webkit-scrollbar { width: 4px; }
+    .modal-sidebar::-webkit-scrollbar-track { background: transparent; }
+    .modal-sidebar::-webkit-scrollbar-thumb { background: var(--mid); }
+    .modal-thumb {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      cursor: pointer;
+      opacity: 0.45;
+      border: 1px solid transparent;
+      transition: opacity .2s, border-color .2s;
+    }
+    .modal-thumb.active, .modal-thumb:hover { opacity: 1; border-color: var(--white); }
+    .modal-thumb-label {
+      font-size: 9px;
+      font-family: 'Space Mono', monospace;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-align: center;
+      margin-top: 2px;
+      margin-bottom: 6px;
+    }
+    .modal-footer {
+      padding: 12px 32px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    #modal-page-indicator {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      min-width: 80px;
+      text-align: center;
+    }
+    #modal-page-label {
+      font-size: 12px;
+      color: rgba(255,255,255,.6);
+      letter-spacing: 0.05em;
+    }
+
+    /* ─── LIGHTBOX ────────────────────────────────────── */
+    #lightbox {
+      display: none;
+      position: fixed; inset: 0; z-index: 1100;
+      background: rgba(0,0,0,0.96);
+      align-items: center;
+      justify-content: center;
+    }
+    #lightbox.open { display: flex; }
+    #lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+    }
+    #lightbox-close {
+      position: absolute; top: 20px; right: 24px;
+      background: transparent;
+      border: 1px solid var(--line);
+      color: var(--white);
+      font-size: 20px;
+      width: 44px; height: 44px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+    #lb-prev, #lb-next {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--line);
+      color: var(--white);
+      width: 44px; height: 64px;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s;
+    }
+    #lb-prev:hover, #lb-next:hover { background: rgba(255,255,255,.12); }
+    #lb-prev { left: 20px; }
+    #lb-next { right: 20px; }
+
+    /* ─── STATS BAR ───────────────────────────────────── */
+    .stats-bar {
+      background: var(--gray);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .stat-item {
+      padding: 32px 48px;
+      border-right: 1px solid var(--line);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 4px;
+    }
+    .stat-label {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+
+    /* ─── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      section { padding: 64px 24px; }
+      #hero { padding: 0 24px 64px; }
+      .hero-scroll { display: none; }
+      .stat-item { padding: 24px; }
+      .stats-bar { grid-template-columns: repeat(2,1fr); }
+      .modal-sidebar { display: none; }
+      footer { padding: 24px; }
+    }
+    @media (max-width: 600px) {
+      .stats-bar { grid-template-columns: 1fr 1fr; }
+      .tp-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ══════════════════════════════════════════════════════
+       ANIMATIONS
+    ══════════════════════════════════════════════════════ */
+
+    /* ─── Keyframes ──────────────────────────────────────── */
+    @keyframes fadeUp   { from { opacity:0; transform:translateY(32px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fadeDown { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fadeIn   { from { opacity:0; } to { opacity:1; } }
+    @keyframes slideLeft  { from { opacity:0; transform:translateX(-48px); } to { opacity:1; transform:translateX(0); } }
+    @keyframes slideRight { from { opacity:0; transform:translateX(48px); } to { opacity:1; transform:translateX(0); } }
+    @keyframes lineDraw { from { transform:scaleX(0); transform-origin:left; } to { transform:scaleX(1); transform-origin:left; } }
+    @keyframes scrollBounce {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(6px); }
+    }
+    @keyframes shimmer {
+      0%   { background-position: -400px 0; }
+      100% { background-position: 400px 0; }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.45; }
+    }
+
+    /* ─── Hero — on-load sequence ────────────────────────── */
+    .hero-tag     { opacity:0; animation: fadeUp  .7s cubic-bezier(.22,1,.36,1) forwards .25s; }
+    h1            { opacity:0; animation: fadeUp  .95s cubic-bezier(.22,1,.36,1) forwards .45s; }
+    .hero-sub     { opacity:0; animation: fadeUp  .75s cubic-bezier(.22,1,.36,1) forwards .72s; }
+    .hero-actions { opacity:0; animation: fadeUp  .7s cubic-bezier(.22,1,.36,1) forwards .95s; }
+    .hero-scroll  { opacity:0; animation: fadeIn  1s ease forwards 1.4s; }
+    .hero-scroll::before { animation: scrollBounce 2.2s ease-in-out infinite 2s; }
+
+    /* ─── Scroll-reveal base classes ─────────────────────── */
+    .reveal       { opacity:0; transform:translateY(28px);  transition: opacity .75s cubic-bezier(.22,1,.36,1), transform .75s cubic-bezier(.22,1,.36,1); }
+    .reveal-left  { opacity:0; transform:translateX(-44px); transition: opacity .8s  cubic-bezier(.22,1,.36,1), transform .8s  cubic-bezier(.22,1,.36,1); }
+    .reveal-right { opacity:0; transform:translateX(44px);  transition: opacity .8s  cubic-bezier(.22,1,.36,1), transform .8s  cubic-bezier(.22,1,.36,1); }
+    .reveal.is-visible,
+    .reveal-left.is-visible,
+    .reveal-right.is-visible { opacity:1; transform:none; }
+
+    /* ─── Section label underline draw ───────────────────── */
+    .section-label {
+      position: relative;
+      display: inline-block;
+    }
+    .section-label::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -4px;
+      width: 100%; height: 1px;
+      background: var(--muted);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .6s cubic-bezier(.22,1,.36,1) .3s;
+    }
+    .section-label.is-visible::after { transform: scaleX(1); }
+
+    /* ─── Tech pack card hover upgrade ───────────────────── */
+    .tp-card {
+      transition: transform .3s cubic-bezier(.22,1,.36,1),
+                  box-shadow .3s ease,
+                  border-color .3s ease !important;
+    }
+    .tp-card:hover {
+      transform: translateY(-6px) !important;
+      box-shadow: 0 24px 48px rgba(0,0,0,0.6) !important;
+      border-color: rgba(255,255,255,0.18) !important;
+    }
+
+    /* ─── Clothing grid item hover ────────────────────────── */
+    .clothing-item {
+      transition: transform .3s cubic-bezier(.22,1,.36,1),
+                  box-shadow .3s ease !important;
+    }
+    .clothing-item:hover {
+      transform: scale(1.03) !important;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.55) !important;
+      z-index: 2;
+    }
+
+    /* ─── Brand & Logo card hover upgrade ────────────────── */
+    .brand-card, .logo-card {
+      transition: transform .3s cubic-bezier(.22,1,.36,1),
+                  box-shadow .3s ease,
+                  border-color .3s ease !important;
+    }
+    .brand-card:hover, .logo-card:hover {
+      transform: translateY(-5px) !important;
+      box-shadow: 0 20px 44px rgba(0,0,0,0.55) !important;
+      border-color: rgba(255,255,255,0.15) !important;
+    }
+
+    /* ─── Stats counter shimmer (before count) ───────────── */
+    .about-stat-num.counting {
+      background: linear-gradient(90deg, var(--muted) 25%, var(--white) 50%, var(--muted) 75%);
+      background-size: 400px 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer .9s ease infinite;
+    }
+
+    /* ─── Nav active link indicator ──────────────────────── */
+    .nav-links a { position: relative; }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 100%; height: 1px;
+      background: var(--white);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .25s ease;
+    }
+    .nav-links a.active::after,
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    /* ─── Custom cursor ───────────────────────────────────── */
+    @media (pointer: fine) {
+      * { cursor: none !important; }
+      .cursor-dot {
+        position: fixed; z-index: 9999;
+        width: 6px; height: 6px;
+        background: var(--white);
+        border-radius: 50%;
+        pointer-events: none;
+        transform: translate(-50%,-50%);
+        transition: transform .08s linear, opacity .2s;
+        will-change: transform;
+      }
+      .cursor-ring {
+        position: fixed; z-index: 9998;
+        width: 32px; height: 32px;
+        border: 1px solid rgba(245,244,240,.35);
+        border-radius: 50%;
+        pointer-events: none;
+        transform: translate(-50%,-50%);
+        transition: width .25s ease, height .25s ease,
+                    border-color .25s ease, transform .12s linear;
+        will-change: transform;
+      }
+      .cursor-ring.hovered {
+        width: 52px; height: 52px;
+        border-color: rgba(245,244,240,.7);
+      }
+    }
+
+    /* ─── Load-in bar ─────────────────────────────────────── */
+    #load-bar {
+      position: fixed; top: 0; left: 0; z-index: 9999;
+      height: 2px;
+      background: var(--white);
+      width: 0%;
+      transition: width .4s ease;
+      pointer-events: none;
+    }
+
+  </style>
+</head>
+<body>
+<div id="load-bar"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ── NAV ─────────────────────────────────────────── -->
+<nav>
+  <a class="nav-logo" href="#">Zakaria.M</a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#techpacks">Tech Packs</a>
+    <a href="#clothing">Designs</a>
+    <a href="#brand">Brand Identity</a>
+    <a href="#logos">Logos</a>
+  </div>
+  <a class="nav-cta" href="https://www.upwork.com/freelancers/zakariam25?mp_source=share" target="_blank">Available on Upwork ↗</a>
+</nav>
+
+<!-- ── HERO ────────────────────────────────────────── -->
+<section id="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <img class="hero-bg-img" src="streetwear-20260331T125848Z-1-001/streetwear/new/1.jpg" alt="" />
+    <img class="hero-bg-img" src="streetwear-20260331T125848Z-1-001/streetwear/new/3.jpg" alt="" />
+    <img class="hero-bg-img" src="streetwear-20260331T125848Z-1-001/streetwear/new/5.jpg" alt="" />
+    <img class="hero-bg-img" src="alien/alien mockup.png" alt="" />
+    <img class="hero-bg-img" src="space pyramid/thumbnail 4.png" alt="" />
+    <img class="hero-bg-img" src="charles chaplin/thumbnail 2.png" alt="" />
+  </div>
+  <div class="hero-content">
+    <p class="hero-tag">Fashion Designer & Tech Pack Specialist</p>
+    <h1>Design that ships<br /><em>to factory.</em></h1>
+    <p class="hero-sub">Streetwear, tech packs, brand identity. I take garment ideas from sketch to factory-ready documentation — fast and without back-and-forth.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#techpacks">View Tech Packs</a>
+      <a class="btn-ghost" href="https://www.upwork.com/freelancers/zakariam25?mp_source=share" target="_blank">Message on Upwork ↗</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- ── STATS ────────────────────────────────────────── -->
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-num">21+</div><div class="stat-label">Tech Packs Delivered</div></div>
+  <div class="stat-item"><div class="stat-num">7+</div><div class="stat-label">Brand Identities</div></div>
+  <div class="stat-item"><div class="stat-num">50+</div><div class="stat-label">Design Projects</div></div>
+  <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Factory-Ready Output</div></div>
+</div>
+
+<!-- ── SERVICES ────────────────────────────────────── -->
+<section id="services">
+  <p class="section-label">What I do</p>
+  <h2 class="section-title">Full-stack fashion<br />design services</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-name">Tech Packs</div>
+      <p class="service-desc">Factory-ready technical packages with flat sketches, BOM, POM, construction details, size charts, and colorways. Garments that get sampled right the first time.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-name">Streetwear Design</div>
+      <p class="service-desc">Oversized silhouettes, graphic tees, hoodies, and outerwear. Designed for modern streetwear brands that want premium aesthetic at production scale.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-name">Print-on-Demand</div>
+      <p class="service-desc">Print-ready artwork for DTG, AOP, and embroidery — optimized for POD platforms and high-resolution production files.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-name">Brand Identity</div>
+      <p class="service-desc">Complete visual identity systems for fashion brands — logo, color palette, typography, brand guidelines, and collateral designed for longevity.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">05</div>
+      <div class="service-name">Activewear & Jerseys</div>
+      <p class="service-desc">Technical documentation for activewear, sports kits, and performance garments including pattern callouts, sublimation specs, and custom trims.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">06</div>
+      <div class="service-name">Full Product Dev</div>
+      <p class="service-desc">End-to-end product development from concept to factory. I handle design, tech pack, revision cycles, and factory liaison documentation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ────────────────────────────────────────── -->
+<section id="about">
+  <div class="about-photo-wrap">
+    <img
+      id="about-img"
+      class="about-photo"
+      src="about-me.jpg"
+      alt="Zakaria — Fashion Designer"
+      onerror="this.style.display='none';document.getElementById('about-monogram').style.display='flex';"
+    />
+    <div id="about-monogram" class="about-monogram" style="display:none;">
+      <span class="about-monogram-letter">Z</span>
+      <span class="about-monogram-name">Zakaria M.</span>
+      <span class="about-monogram-role">Fashion Designer</span>
+    </div>
+    <div class="about-photo-frame"></div>
+  </div>
+
+  <div class="about-text">
+    <p class="about-tagline">Fashion Designer &amp; Tech Pack Specialist</p>
+    <h2 class="about-heading">Zakaria.<br /><em>Turning ideas into</em><br />production-ready garments.</h2>
+
+    <p class="about-bio">
+      I'm a freelance fashion designer based in Morocco, working with clothing brands and startups worldwide. My focus is on <strong>technical precision</strong> — taking a concept from rough idea to a complete, factory-ready package without the usual back-and-forth.
+    </p>
+    <p class="about-bio">
+      I've built <strong>brand identities</strong> from scratch, designed <strong>full streetwear collections</strong>, developed <strong>tech packs</strong> across every garment category, and created <strong>print-ready artwork</strong> for global POD platforms. Fast turnaround, clean execution, zero guesswork for the factory.
+    </p>
+
+    <div class="about-stats">
+      <div class="about-stat">
+        <span class="about-stat-num">20+</span>
+        <span class="about-stat-label">Tech Packs</span>
+      </div>
+      <div class="about-stat">
+        <span class="about-stat-num">7</span>
+        <span class="about-stat-label">Brand Systems</span>
+      </div>
+      <div class="about-stat">
+        <span class="about-stat-num">200+</span>
+        <span class="about-stat-label">Designs</span>
+      </div>
+    </div>
+
+    <div class="about-skills">
+      <span class="about-skill">Tech Packs</span>
+      <span class="about-skill">Streetwear</span>
+      <span class="about-skill">Brand Identity</span>
+      <span class="about-skill">Adobe Illustrator</span>
+      <span class="about-skill">Photoshop</span>
+      <span class="about-skill">Print-on-Demand</span>
+      <span class="about-skill">Activewear</span>
+      <span class="about-skill">Flat Sketching</span>
+      <span class="about-skill">POM &amp; BOM</span>
+      <span class="about-skill">Size Grading</span>
+    </div>
+
+    <a class="about-cta" href="https://www.upwork.com/freelancers/zakariam25?mp_source=share" target="_blank">
+      Hire me on Upwork ↗
+    </a>
+  </div>
+</section>
+
+<!-- ── TECH PACKS ──────────────────────────────────── -->
+<section id="techpacks">
+  <p class="section-label">Featured Work</p>
+  <h2 class="section-title">Tech <em>Packs</em></h2>
+  <div class="search-wrap">
+    <input class="search-input" type="text" id="tp-search" placeholder="Search tech packs — e.g. jacket, activewear, pants…" autocomplete="off" />
+    <span class="search-count" id="tp-search-count"></span>
+  </div>
+  <div class="tp-grid" id="tp-grid">
+    <!-- Dynamically generated by JS -->
+  </div>
+</section>
+
+<!-- ── CLOTHING DESIGN ─────────────────────────────── -->
+<section id="clothing">
+  <p class="section-label">Clothing Design</p>
+  <h2 class="section-title">Design <em>Work</em></h2>
+  <div class="filter-tabs" id="filter-tabs">
+    <button class="filter-tab active" data-filter="all">All</button>
+    <button class="filter-tab" data-filter="streetwear">Streetwear</button>
+    <button class="filter-tab" data-filter="print">Print / Graphic</button>
+    <button class="filter-tab" data-filter="jerseys">Jerseys</button>
+    <button class="filter-tab" data-filter="pod">POD / AOP</button>
+  </div>
+  <div class="clothing-grid" id="clothing-grid">
+    <!-- Dynamically generated by JS -->
+  </div>
+  <div class="load-more-wrap">
+    <button class="btn-load-more" id="load-more-btn">Load More</button>
+  </div>
+</section>
+
+<!-- ── BRAND IDENTITY ──────────────────────────────── -->
+<section id="brand">
+  <p class="section-label">Brand Work</p>
+  <h2 class="section-title">Brand <em>Identity</em></h2>
+  <div class="brand-grid" id="brand-grid">
+    <!-- Dynamically generated by JS -->
+  </div>
+</section>
+
+<!-- ── LOGO DESIGN ─────────────────────────────────── -->
+<section id="logos">
+  <p class="section-label">Visual Identity</p>
+  <h2 class="section-title">Logo <em>Design</em></h2>
+  <div class="logo-grid" id="logo-grid">
+    <!-- Dynamically generated by JS -->
+  </div>
+</section>
+
+<!-- ── CTA ─────────────────────────────────────────── -->
+<section id="cta">
+  <p class="cta-label">Ready to work together?</p>
+  <h2 class="cta-title">Let's build your next<br />garment — together.</h2>
+  <p class="cta-sub">From a rough idea to a factory-ready tech pack in days. Available for short and long-term projects.</p>
+  <a class="btn-dark" href="https://www.upwork.com/freelancers/zakariam25?mp_source=share" target="_blank">Message me on Upwork ↗</a>
+</section>
+
+<!-- ── FOOTER ──────────────────────────────────────── -->
+<footer>
+  <span class="footer-logo">Zakaria.M — Fashion Designer</span>
+  <span class="footer-note">© 2026 · All rights reserved</span>
+  <a class="nav-cta" href="https://www.upwork.com/freelancers/zakariam25?mp_source=share" target="_blank">Available on Upwork ↗</a>
+</footer>
+
+<!-- ── TECH PACK MODAL ─────────────────────────────── -->
+<div id="tp-modal">
+  <div class="modal-header">
+    <div style="display:flex;align-items:center;">
+      <span class="modal-title" id="modal-tp-name">Tech Pack</span>
+      <span class="modal-meta" id="modal-tp-cat"></span>
+    </div>
+    <button class="modal-close" id="modal-close-btn">✕</button>
+  </div>
+  <div class="modal-body">
+    <div class="modal-main">
+      <button class="modal-nav" id="modal-prev">‹</button>
+      <div class="modal-img-wrap">
+        <img id="modal-current-img" src="" alt="Tech Pack Page" />
+      </div>
+      <button class="modal-nav" id="modal-next">›</button>
+    </div>
+    <div class="modal-sidebar" id="modal-sidebar"></div>
+  </div>
+  <div class="modal-footer">
+    <button class="modal-nav" id="modal-prev2" style="position:static;transform:none;width:40px;height:40px;">‹</button>
+    <span id="modal-page-label"></span>
+    <span id="modal-page-indicator"></span>
+    <button class="modal-nav" id="modal-next2" style="position:static;transform:none;width:40px;height:40px;">›</button>
+  </div>
+</div>
+
+<!-- ── LIGHTBOX ────────────────────────────────────── -->
+<div id="lightbox">
+  <button id="lightbox-close">✕</button>
+  <button id="lb-prev">‹</button>
+  <img id="lb-img" src="" alt="" />
+  <button id="lb-next">›</button>
+</div>
+
+<!-- ── JAVASCRIPT ──────────────────────────────────── -->
+<script>
+
+// ── DATA ─────────────────────────────────────────────
+
+const TP_BASE = "Tech pack portfolio-20260331T125131Z-1-001/Tech pack portfolio/";
+
+const techPacks = [
+  {
+    name: "Leather Jacket",
+    category: "Outerwear",
+    folder: TP_BASE + "leather jacket/",
+    cover: "page 1-01.jpg",
+    pages: [
+      { label: "Cover / Colorway",     file: "page 1-01.jpg" },
+      { label: "Flat Sketch",          file: "page 2-01.jpg" },
+      { label: "Flat Sketch Alt",      file: "page 2v1-01.jpg" },
+      { label: "Construction Details", file: "page 3-01.jpg" },
+      { label: "Measurements (POM)",   file: "page 4-01.jpg" },
+      { label: "Size Chart",           file: "page 5-01.jpg" },
+      { label: "BOM / Trims",          file: "page 6-01.jpg" },
+      { label: "Detail Views",         file: "page 7-01.jpg" },
+      { label: "Reference",            file: "page 8-01.jpg" }
+    ]
+  },
+  {
+    name: "ABC Pants",
+    category: "Bottoms",
+    folder: TP_BASE + "ABC pants/",
+    cover: "page 1-01.jpg",
+    pages: [
+      { label: "Cover / Colorway",     file: "page 1-01.jpg" },
+      { label: "Flat Sketch",          file: "page 2-01.jpg" },
+      { label: "Flat Sketch Alt",      file: "page 2v1-01.jpg" },
+      { label: "Construction Details", file: "page 3-01.jpg" },
+      { label: "Measurements (POM)",   file: "page 4-01.jpg" },
+      { label: "Size Chart",           file: "page 5-01.jpg" },
+      { label: "Size Chart Alt",       file: "page 5v1-01.jpg" },
+      { label: "BOM / Trims",          file: "page 6-01.jpg" },
+      { label: "Detail Views",         file: "page 7-01.jpg" },
+      { label: "Reference",            file: "page 8-01.jpg" }
+    ]
+  },
+  {
+    name: "3D Oversize Hoodie",
+    category: "Tops",
+    folder: TP_BASE + "3d oversize hoodie/",
+    cover: "page 1-01.jpg",
+    pages: [
+      { label: "Cover / Colorway",        file: "page 1-01.jpg" },
+      { label: "Flat Sketch",             file: "page 2-01.jpg" },
+      { label: "Flat Sketch Alt",         file: "page 2v1-01.jpg" },
+      { label: "Construction Details",    file: "page 3v1-01.jpg" },
+      { label: "Construction Alt 2",      file: "page 3v2-01.jpg" },
+      { label: "Construction Alt 3",      file: "page 3v3-01.jpg" },
+      { label: "Construction Alt 4",      file: "page 3v4-01.jpg" },
+      { label: "Construction Alt 5",      file: "page 3v5-01.jpg" },
+      { label: "Construction Alt 6",      file: "page 3v6-01.jpg" },
+      { label: "Measurements (POM)",      file: "page 4-01.jpg" },
+      { label: "Size Chart",              file: "page 5-01.jpg" },
+      { label: "Size Chart Alt",          file: "page 5v1-01.jpg" },
+      { label: "Fabric / Materials",      file: "page 6-01.jpg" },
+      { label: "BOM / Trims",             file: "page 7-01.jpg" },
+      { label: "Detail Views",            file: "page 8-01.jpg" },
+      { label: "Reference",               file: "page 9-01.jpg" },
+      { label: "3D View — Colorway 1",    file: "oversized hoodie new 1_Default Colorway.png" },
+      { label: "3D View — Colorway 2",    file: "oversized hoodie new 2_Default Colorway.png" },
+      { label: "3D View — Colorway 3",    file: "oversized hoodie new 3_Default Colorway.png" },
+      { label: "3D View — Colorway 4",    file: "oversized hoodie new 4_Default Colorway.png" },
+      { label: "3D View — Colorway 5",    file: "oversized hoodie new 5_Default Colorway.png" },
+      { label: "3D View — Colorway 6",    file: "oversized hoodie new 6_Default Colorway.png" },
+      { label: "3D View — Colorway 7",    file: "oversized hoodie new 7_Default Colorway.png" },
+      { label: "3D View — V1",            file: "oversized hoodie new v1_Default Colorway.png" },
+      { label: "3D View — V2",            file: "oversized hoodie new v2_Default Colorway.png" },
+      { label: "3D View — V3",            file: "oversized hoodie new v3_Default Colorway.png" },
+      { label: "3D View — V4",            file: "oversized hoodie new v4_Default Colorway.png" },
+      { label: "3D View — V5",            file: "oversized hoodie new v5_Default Colorway.png" },
+      { label: "3D View — V6",            file: "oversized hoodie new v6_Default Colorway.png" },
+      { label: "3D View — V8",            file: "oversized hoodie new v8_Default Colorway.png" }
+    ]
+  },
+  {
+    name: "Women's Activewear",
+    category: "Activewear",
+    folder: TP_BASE + "Women_s Activewear outfit/",
+    cover: "page 1-01.jpg",
+    pages: [
+      { label: "Cover / Colorway",     file: "page 1-01.jpg" },
+      { label: "Flat Sketch (Top)",    file: "page 2-01.jpg" },
+      { label: "Flat Sketch (Bottom)", file: "page 2v1-01.jpg" },
+      { label: "Flat Sketch Alt 2",    file: "page 2v2-01.jpg" },
+      { label: "Flat Sketch Alt 3",    file: "page 2v3-01.jpg" },
+      { label: "Flat Sketch Alt 4",    file: "page 2v4-01.jpg" },
+      { label: "Construction Details", file: "page 3-01.jpg" },
+      { label: "Construction Alt",     file: "page 3v1-01.jpg" },
+      { label: "Construction Alt 2",   file: "page 3v2-01.jpg" },
+      { label: "Measurements (POM)",   file: "page 4-01.jpg" },
+      { label: "Size Chart",           file: "page 5-01.jpg" },
+      { label: "BOM",                  file: "page 6-01.jpg" },
+      { label: "Detail Views",         file: "page 7-01.jpg" },
+      { label: "Reference",            file: "page 8-01.jpg" },
+      { label: "Size Chart (Crop Top)",file: "size chart(Crop Top)-01.jpg" },
+      { label: "Size Chart (Legging)", file: "size chart(Legging)-01.jpg" }
+    ]
+  },
+  {
+    name: "Man Overcoat",
+    category: "Outerwear",
+    folder: TP_BASE + "man overcoat/",
+    cover: "page 1-01.jpg",
+    pages: [
+      { label: "Cover / Colorway",     file: "page 1-01.jpg" },
+      { label: "Flat Sketch",          file: "page 2-01.jpg" },
+      { label: "Flat Sketch Alt",      file: "page 2v1-01.jpg" },
+      { label: "Flat Sketch Alt 2",    file: "page 2v2-01.jpg" },
+      { label: "Construction Details", file: "page 3-01.jpg" },
+      { label: "Measurements (POM)",   file: "page 4-01.jpg" },
+      { label: "Size Chart",           file: "page 5-01.jpg" },
+      { label: "Size Chart Alt",       file: "page 5v1-01.jpg" },
+      { label: "BOM / Trims",          file: "page 6-01.jpg" },
+      { label: "Detail Views",         file: "page 7-01.jpg" },
+      { label: "Reference",            file: "page 8-01.jpg" },
+      { label: "Reference Alt",        file: "page 8v1-01.jpg" }
+    ]
+  },
+  {
+    name: "Amir Outfit",
+    category: "Full Outfit",
+    folder: TP_BASE + "amir outfit/",
+    cover: "page 1-01.jpg",
+    pages: [
+      { label: "Cover",                file: "page 1-01.jpg" },
+      { label: "Flat Sketch",          file: "page 2-01.jpg" },
+      { label: "Colorway A",           file: "page 2v1-01.jpg" },
+      { label: "Colorway B",           file: "page 2v2-01.jpg" },
+      { label: "Colorway C",           file: "page 2v3-01.jpg" },
+      { label: "Colorway D",           file: "page 2v4-01.jpg" },
+      { label: "Colorway E",           file: "page 2v5-01.jpg" },
+      { label: "Construction Details", file: "page 3v1-01.jpg" },
+      { label: "Construction Alt 2",   file: "page 3v2-01.jpg" },
+      { label: "Construction Alt 3",   file: "page 3v3-01.jpg" },
+      { label: "Construction Alt 4",   file: "page 3v4-01.jpg" },
+      { label: "Construction Alt 5",   file: "page 3v5-01.jpg" },
+      { label: "Construction Alt 6",   file: "page 3v6-01.jpg" },
+      { label: "Construction Alt 7",   file: "page 3v7-01.jpg" },
+      { label: "Construction Alt 8",   file: "page 3v8-01.jpg" },
+      { label: "Measurements (POM)",   file: "page 4-01.jpg" },
+      { label: "Size Chart",           file: "page 5-01.jpg" },
+      { label: "Size Chart Alt",       file: "page 5v1-01.jpg" },
+      { label: "BOM",                  file: "page 6-01.jpg" },
+      { label: "Detail Views",         file: "page 7-01.jpg" },
+      { label: "Reference",            file: "page 8-01.jpg" },
+      { label: "Extra Details",        file: "page 9-01.jpg" },
+      { label: "Extra Alt",            file: "page 10-01.jpg" }
+    ]
+  },
+  {
+    name: "Jogger Tech Fleece",
+    category: "Bottoms",
+    folder: TP_BASE + "Jogger Tech Fleece/",
+    cover: "page 1-01.jpg",
+    pages: [
+      { label: "Cover / Colorway",     file: "page 1-01.jpg" },
+      { label: "Flat Sketch",          file: "page 2-01.jpg" },
+      { label: "Flat Sketch Alt",      file: "page 2v1-01.jpg" },
+      { label: "Construction Details", file: "page 3-01.jpg" },
+      { label: "Measurements (POM)",   file: "page 4-01.jpg" },
+      { label: "Size Chart",           file: "page 5-01.jpg" },
+      { label: "Size Chart Alt",       file: "page 5v1-01.jpg" },
+      { label: "BOM / Trims",          file: "page 6-01.jpg" },
+      { label: "Detail Views",         file: "page 7-01.jpg" },
+      { label: "Reference",            file: "page 8-01.jpg" },
+      { label: "Reference Alt",        file: "page 8v1-01.jpg" }
+    ]
+  },
+  {
+    name: "Deia Tee",
+    category: "Tops",
+    folder: TP_BASE + "deia tech/",
+    cover: "page-1(colorway).jpg",
+    pages: [
+      { label: "Colorway",              file: "page-1(colorway).jpg" },
+      { label: "Fabric Reference",      file: "page-2(fabric-reference).jpg" },
+      { label: "Front & Back View",     file: "page-3(front&back-view).jpg" },
+      { label: "Front Construction",    file: "page-4(front-construction-details).jpg" },
+      { label: "Back Construction",     file: "page-5(back-construction-details).jpg" },
+      { label: "Neck Details",          file: "page-6(neck-details).jpg" },
+      { label: "Logo Details",          file: "page-7(chest-logo-details).jpg" },
+      { label: "Back Design Details",   file: "page-8(back-design-details).jpg" },
+      { label: "Measurements (POM)",    file: "page-9(point-of-measurements).jpg" },
+      { label: "Size Chart",            file: "page-10(size-chart).jpg" },
+      { label: "Reference",             file: "page-11(reference-pictures).jpg" }
+    ]
+  },
+  {
+    name: "Oversize Shirt",
+    category: "Tops",
+    folder: TP_BASE + "oversize shirt/",
+    cover: "page 1-01.jpg",
+    pages: [
+      { label: "Cover / Colorway",     file: "page 1-01.jpg" },
+      { label: "Flat Sketch",          file: "page 2-01.jpg" },
+      { label: "Flat Sketch Alt",      file: "page 2v1-01.jpg" },
+      { label: "Measurements (POM)",   file: "page 4-01.jpg" },
+      { label: "Size Chart",           file: "page 5-01.jpg" },
+      { label: "BOM / Trims",          file: "page 6-01.jpg" },
+      { label: "Detail Views",         file: "page 7-01.jpg" },
+      { label: "Reference",            file: "page 8-01.jpg" }
+    ]
+  },
+  {
+    name: "Distress Long Sleeve",
+    category: "Tops",
+    folder: TP_BASE + "distress long sleeve/",
+    cover: "page 1-01.jpg",
+    pages: [
+      { label: "Cover / Colorway",     file: "page 1-01.jpg" },
+      { label: "Flat Sketch",          file: "page 2-01.jpg" },
+      { label: "Flat Sketch Alt",      file: "page 2v1-01.jpg" },
+      { label: "Construction Details", file: "page 3-01.jpg" },
+      { label: "Construction Alt",     file: "page 3v1-01.jpg" },
+      { label: "Construction Alt 2",   file: "page 3v2-01.jpg" },
+      { label: "Measurements (POM)",   file: "page 4-01.jpg" },
+      { label: "Size Chart",           file: "page 5-01.jpg" },
+      { label: "BOM / Trims",          file: "page 6-01.jpg" },
+      { label: "Detail Views",         file: "page 7-01.jpg" },
+      { label: "Reference",            file: "page 8-01.jpg" },
+      { label: "Reference Alt",        file: "page 8v1-01.jpg" }
+    ]
+  },
+  {
+    name: "Kidswear Set",
+    category: "Kids",
+    folder: TP_BASE + "kidswear/",
+    cover: "kidswear-page-1(colorway).jpg",
+    pages: [
+      { label: "Colorway",             file: "kidswear-page-1(colorway).jpg" },
+      { label: "CAD Details",          file: "kidswear-page-2(cad-details).jpg" },
+      { label: "Hood Details",         file: "kidswear-page-3(hood-details).jpg" },
+      { label: "Measurements (POM)",   file: "kidswear-page-4(SET-POM).jpg" },
+      { label: "Spec Sheet",           file: "kidswear-page-5(spec-sheet).jpg" },
+      { label: "Reference",            file: "kidswear-page-6(reference-pictures).jpg" }
+    ]
+  },
+  {
+    name: "Underwear Tech Pack",
+    category: "Basics",
+    folder: TP_BASE + "underwear tech pack/",
+    cover: "page 1-01.jpg",
+    pages: [
+      { label: "Cover / Colorway",     file: "page 1-01.jpg" },
+      { label: "Flat Sketch",          file: "page 2-01.jpg" },
+      { label: "Flat Sketch Alt",      file: "page 2v1-01.jpg" },
+      { label: "Flat Sketch Alt 2",    file: "page 2v2-01.jpg" },
+      { label: "Construction Details", file: "page 3-01.jpg" },
+      { label: "Measurements (POM)",   file: "page 4-01.jpg" },
+      { label: "Size Chart",           file: "page 5-01.jpg" },
+      { label: "BOM / Trims",          file: "page 6-01.jpg" },
+      { label: "Detail Views",         file: "page 7-01.jpg" },
+      { label: "Reference",            file: "page 8-01.jpg" },
+      { label: "Reference Alt",        file: "page 8v1-01.jpg" },
+      { label: "Reference Alt 2",      file: "page 8v2-01.jpg" }
+    ]
+  },
+  {
+    name: "Running Rain Jacket",
+    category: "Outerwear",
+    folder: TP_BASE + "running rain jacket/",
+    cover: "page 1-01.jpg",
+    pages: [
+      { label: "Cover / Colorway",     file: "page 1-01.jpg" },
+      { label: "Flat Sketch",          file: "page 2-01.jpg" },
+      { label: "Flat Sketch Alt",      file: "page 2v1-01.jpg" },
+      { label: "Flat Sketch Alt 2",    file: "page 2v2-01.jpg" },
+      { label: "Flat Sketch Alt 3",    file: "page 2v3-01.jpg" },
+      { label: "Construction Details", file: "page 3-01.jpg" },
+      { label: "Construction Alt",     file: "page 3v1-01.jpg" },
+      { label: "Construction Alt 2",   file: "page 3v2-01.jpg" },
+      { label: "Construction Alt 3",   file: "page 3v3-01.jpg" },
+      { label: "Construction Alt 4",   file: "page 3v4-01.jpg" },
+      { label: "Measurements (POM)",   file: "page 4-01.jpg" },
+      { label: "Size Chart",           file: "page 5-01.jpg" },
+      { label: "Size Chart Alt",       file: "page 5v1-01.jpg" },
+      { label: "Size Chart Alt 2",     file: "page 5v2-01.jpg" },
+      { label: "Size Chart Alt 3",     file: "page 5v3-01.jpg" },
+      { label: "BOM / Trims",          file: "page 6-01.jpg" },
+      { label: "BOM Alt",              file: "page 6v1-01.jpg" },
+      { label: "Detail Views",         file: "page 7-01.jpg" },
+      { label: "Reference",            file: "page 8-01.jpg" },
+      { label: "Reference Alt",        file: "page 8v1-01.jpg" }
+    ]
+  },
+  {
+    name: "Track Jacket",
+    category: "Outerwear",
+    folder: TP_BASE + "track jacket/",
+    cover: "page 1-01.jpg",
+    pages: [
+      { label: "Cover / Colorway",     file: "page 1-01.jpg" },
+      { label: "Flat Sketch",          file: "page 2-01.jpg" },
+      { label: "Flat Sketch Alt",      file: "page 2v1-01.jpg" },
+      { label: "Flat Sketch Alt 2",    file: "page 2v2-01.jpg" },
+      { label: "Construction Details", file: "page 3-01.jpg" },
+      { label: "Construction Alt",     file: "page 3v1-01.jpg" },
+      { label: "Construction Alt 2",   file: "page 3v2-01.jpg" },
+      { label: "Measurements (POM)",   file: "page 4-01.jpg" },
+      { label: "Size Chart",           file: "page 5-01.jpg" },
+      { label: "Size Chart Alt",       file: "page 5v1-01.jpg" },
+      { label: "Size Chart Alt 2",     file: "page 5v2-01.jpg" },
+      { label: "BOM / Trims",          file: "page 6-01.jpg" },
+      { label: "Detail Views",         file: "page 7-01.jpg" },
+      { label: "Reference",            file: "page 8-01.jpg" }
+    ]
+  },
+  {
+    name: "Male Gymwear",
+    category: "Activewear",
+    folder: TP_BASE + "male gymwear/",
+    cover: "page 1-01.jpg",
+    pages: [
+      { label: "Cover / Colorway",     file: "page 1-01.jpg" },
+      { label: "Flat Sketch",          file: "page 2-01.jpg" },
+      { label: "Flat Sketch Alt",      file: "page 2v1-01.jpg" },
+      { label: "Construction Details", file: "page 3-01.jpg" },
+      { label: "Measurements (POM)",   file: "page 4-01.jpg" },
+      { label: "Size Chart",           file: "page 5-01.jpg" },
+      { label: "Size Chart Alt",       file: "page 5v1-01.jpg" },
+      { label: "BOM / Trims",          file: "page 6-01.jpg" },
+      { label: "Detail Views",         file: "page 7-01.jpg" },
+      { label: "Reference",            file: "page 8-01.jpg" },
+      { label: "Reference Alt",        file: "page 8v1-01.jpg" }
+    ]
+  },
+  {
+    name: "Golfwear",
+    category: "Sportswear",
+    folder: TP_BASE + "golfwear/",
+    cover: "page 1-01.jpg",
+    pages: [
+      { label: "Cover / Colorway",     file: "page 1-01.jpg" },
+      { label: "Flat Sketch",          file: "page 2-01.jpg" },
+      { label: "Flat Sketch Alt",      file: "page 2v1-01.jpg" },
+      { label: "Construction Details", file: "page 3-01.jpg" },
+      { label: "Measurements (POM)",   file: "page 4-01.jpg" },
+      { label: "Size Chart",           file: "page 5-01.jpg" },
+      { label: "Size Chart Alt",       file: "page 5V1-01.jpg" },
+      { label: "BOM / Trims",          file: "page 6-01.jpg" },
+      { label: "Detail Views",         file: "page 7-01.jpg" },
+      { label: "Reference",            file: "page 8-01.jpg" },
+      { label: "Reference Alt",        file: "page 8v1-01.jpg" },
+      { label: "Reference Alt 2",      file: "page 8v2-01.jpg" }
+    ]
+  },
+  {
+    name: "Loungewear",
+    category: "Loungewear",
+    folder: TP_BASE + "loungewear/",
+    cover: "page 1-01.jpg",
+    pages: [
+      { label: "Cover / Colorway",     file: "page 1-01.jpg" },
+      { label: "Flat Sketch",          file: "page 2-01.jpg" },
+      { label: "Flat Sketch Alt",      file: "page 2v1-01.jpg" },
+      { label: "Construction Details", file: "page 3-01.jpg" },
+      { label: "Measurements (POM)",   file: "page 4-01.jpg" },
+      { label: "Size Chart",           file: "page 5-01.jpg" },
+      { label: "Size Chart Alt",       file: "page 5v1-01.jpg" },
+      { label: "BOM / Trims",          file: "page 6-01.jpg" },
+      { label: "Detail Views",         file: "page 7-01.jpg" },
+      { label: "Reference",            file: "page 8-01.jpg" }
+    ]
+  },
+  {
+    name: "Legging",
+    category: "Activewear",
+    folder: TP_BASE + "Legging/",
+    cover: "page 1-01.jpg",
+    pages: [
+      { label: "Cover / Colorway",     file: "page 1-01.jpg" },
+      { label: "Flat Sketch",          file: "page 2-01.jpg" },
+      { label: "Construction Details", file: "page 3-01.jpg" },
+      { label: "Measurements (POM)",   file: "page 4-01.jpg" },
+      { label: "Size Chart",           file: "page 5-01.jpg" },
+      { label: "BOM / Trims",          file: "page 6-01.jpg" },
+      { label: "Detail Views",         file: "page 7-01.jpg" },
+      { label: "Reference",            file: "page 8-01.jpg" }
+    ]
+  },
+  {
+    name: "Athletic Short",
+    category: "Activewear",
+    folder: TP_BASE + "Short/",
+    cover: "page 1-01.jpg",
+    pages: [
+      { label: "Cover / Colorway",     file: "page 1-01.jpg" },
+      { label: "Flat Sketch",          file: "page 2-01.jpg" },
+      { label: "Flat Sketch Alt",      file: "page 2v1-01.jpg" },
+      { label: "Flat Sketch Alt 2",    file: "page 2v2-01.jpg" },
+      { label: "Construction Details", file: "page 3-01.jpg" },
+      { label: "Measurements (POM)",   file: "page 4-01.jpg" },
+      { label: "Size Chart",           file: "page 5-01.jpg" },
+      { label: "Size Chart Alt",       file: "page 5v1-01.jpg" },
+      { label: "BOM / Trims",          file: "page 6-01.jpg" },
+      { label: "Detail Views",         file: "page 7-01.jpg" },
+      { label: "Reference",            file: "page 8-01.jpg" },
+      { label: "Reference Alt",        file: "page 8v1-01.jpg" }
+    ]
+  },
+  {
+    name: "Girl's Outfit",
+    category: "Kids / Girls",
+    folder: TP_BASE + "girl/",
+    cover: "page 1/jpeg file/page 1-01.jpg",
+    pages: [
+      { label: "Cover / Colorway",     file: "page 1/jpeg file/page 1-01.jpg" },
+      { label: "Flat Sketch",          file: "page 2/jpeg file/page 2-01.jpg" },
+      { label: "Flat Sketch Alt",      file: "page 2v1/jpeg file/page 2v1-01.jpg" },
+      { label: "Flat Sketch Alt 2",    file: "page 2v2/jpeg file/page 2v2-01.jpg" },
+      { label: "Flat Sketch Alt 3",    file: "page 2v3/jpeg file/page 2v3-01.jpg" },
+      { label: "Construction Details", file: "page 3/jpeg file/page 3-01.jpg" },
+      { label: "Construction Alt",     file: "page 3v1/jpeg file/page 3v1-01.jpg" },
+      { label: "Measurements (POM)",   file: "page 4/jpeg file/page 4-01.jpg" },
+      { label: "Size Chart",           file: "page 5/jpeg file/page 5-01.jpg" },
+      { label: "BOM / Trims",          file: "page 6/jpeg file/page 6-01.jpg" },
+      { label: "BOM Alt",              file: "page 6v1/jpeg file/page 6v1-01.jpg" },
+      { label: "Detail Views",         file: "page 7/jpeg file/page 7-01.jpg" },
+      { label: "Detail Alt",           file: "page 7v1/jpeg file/page 7v1-01.jpg" },
+      { label: "Reference",            file: "page 8/jpeg file/page 8-01.jpg" }
+    ]
+  }
+]
+
+// Clothing designs data
+const SW_BASE = "streetwear-20260331T125848Z-1-001/streetwear/";
+const POD_BASE = "POD designs-20260331T130038Z-1-001/POD designs/";
+
+const clothingItems = [
+  // ── Streetwear – New ─────────────────────────────────
+  ...[1,2,3,4,5,6,7,8,9,10,11,12,13].map(n => ({
+    src: SW_BASE + `new/${n}.jpg`,
+    label: `Streetwear — Design ${n}`,
+    cat: "streetwear"
+  })),
+  // ── Print / Graphic – Special folders ────────────────
+  { src: "alien/thumbnail 1.png",          label: "Alien Graphic Tee",       cat: "print" },
+  { src: "jujutsu kaisen/thumbnail 3.png", label: "Jujutsu Kaisen Tee",      cat: "print" },
+  { src: "space pyramid/thumbnail 4.png",  label: "Space Pyramid",           cat: "print" },
+  { src: "money/thumbnail 5.png",          label: "Money Graphic",           cat: "print" },
+  { src: "charles chaplin/thumbnail 2.png",label: "Charles Chaplin Graphic", cat: "print" },
+  // ── Print – Named designs (thumbnails) ───────────────
+  { src: "blue-snake-thumbnail.jpg",      label: "Blue Snake",          cat: "print" },
+  { src: "bug-cyberpunk-thumbnail.jpg",   label: "Bug Cyberpunk",       cat: "print" },
+  { src: "focus-thumbnail.jpg",           label: "Focus",               cat: "print" },
+  { src: "guard-thumbnail.jpg",           label: "Guard",               cat: "print" },
+  { src: "hunger-thumbnail.jpg",          label: "Hunger",              cat: "print" },
+  { src: "life-thumbnail.jpg",            label: "Life",                cat: "print" },
+  { src: "mariam-design-thumbnail.jpg",   label: "Mariam Design",       cat: "print" },
+  { src: "money-flower-thumbnail.jpg",    label: "Money Flower",        cat: "print" },
+  { src: "money-lips-thumbnail.jpg",      label: "Money Lips",          cat: "print" },
+  { src: "octopus-thumbnail.jpg",         label: "Octopus",             cat: "print" },
+  { src: "plumber-thumbnail.jpg",         label: "Plumber",             cat: "print" },
+  { src: "praying-snake-thumbnail.jpg",   label: "Praying Snake",       cat: "print" },
+  { src: "rose-flower-mockup.png",        label: "Rose Flower",         cat: "print" },
+  { src: "snake-moon-thumbnail.jpg",      label: "Snake Moon",          cat: "print" },
+  { src: "spacecraft-thumbnail.jpg",      label: "Spacecraft",          cat: "print" },
+  // ── Print – Root named standalone designs ─────────────
+  { src: "dogs street.png",               label: "Dogs Street",         cat: "print" },
+  { src: "green bomb.png",                label: "Green Bomb",          cat: "print" },
+  { src: "intronaut.png",                 label: "Intronaut",           cat: "print" },
+  { src: "made in bzn.png",              label: "Made in BZN",         cat: "print" },
+  { src: "money fire.png",               label: "Money Fire",          cat: "print" },
+  { src: "newsom.png",                   label: "Newsom",              cat: "print" },
+  { src: "okay so boom.png",             label: "Okay So Boom",        cat: "print" },
+  { src: "oversized lifting club.png",   label: "Oversized Lifting Club",cat:"print" },
+  { src: "reject.png",                   label: "Reject",              cat: "print" },
+  { src: "spiritual armor.png",          label: "Spiritual Armor",     cat: "print" },
+  { src: "there's only one god.png",     label: "There's Only One God",cat: "print" },
+  // ── Print – Numbered root designs (1–64) ─────────────
+  ...[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
+      21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,
+      41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,
+      61,62,63,64].map(n => ({
+    src: `${n}.png`,
+    label: `Graphic Design ${n}`,
+    cat: "print"
+  })),
+  // ── Old streetwear prints ─────────────────────────────
+  ...[
+    ["angel-wings-thumbnail.jpg","Angel Wings"],
+    ["astrounat-thumbnail.jpg","Astronaut"],
+    ["baby-angel-thumbnail.jpg","Baby Angel"],
+    ["baby-child-thumbnail.jpg","Baby Child"],
+    ["butterfly-left-thumbnail.jpg","Butterfly"],
+    ["crow-earth-thumbnail.jpg","Crow & Earth"],
+    ["evolution-thumbnail.jpg","Evolution"],
+    ["fast-car-thumbnail-1.jpg","Fast Car"],
+    ["gold-angel-thumbnail.jpg","Gold Angel"],
+    ["greek-queen-thumbnail-V2.jpg","Greek Queen"],
+    ["greek-thumbnail.jpg","Greek"],
+    ["human-controle-thumbnail.jpg","Human Controle"],
+    ["keffiyek-thumbnail.jpg","Keffiyek"],
+    ["lords-thumbnail.jpg","Lords"],
+    ["monalisa-thumbnail.jpg","Mona Lisa"],
+    ["monalisa-wisdom-thumbnail.jpg","Monalisa Wisdom"],
+    ["motorcycle-thumbnail.jpg","Motorcycle"],
+    ["newyork-thumbnail.jpg","New York"],
+    ["ninja-thumbnail.jpg","Ninja"],
+    ["orange-fly-thumbnail.jpg","Orange Fly"],
+    ["red-flower-skeleton-thumbnail.jpg","Red Flower Skeleton"],
+    ["silence-thumbnail.jpg","Silence"],
+    ["skeleton-thumbnail-1.jpg","Skeleton"],
+    ["smile-thumbnail.jpg","Smile"],
+    ["snake-thumbnail.jpg","Snake"],
+    ["stress-by-angel-thumbnail.jpg","Stress by Angel"],
+    ["the-money-angel-thumbnail.jpg","Money Angel"],
+    ["wall-art-thumbnail.jpg","Wall Art"],
+    ["worrior-thumbnail.jpg","Worrior"],
+    ["yingyang-thumbnail.jpg","Yin Yang"],
+    ["zeuis-thumbnail.jpg","Zeus"]
+  ].map(([file, label]) => ({
+    src: SW_BASE + `Old streetwear/${file}`,
+    label,
+    cat: "print"
+  })),
+  // ── Jerseys ────────────────────────────────────────────
+  { src: "knicks-mockup.jpg",              label: "Knicks Jersey",           cat: "jerseys" },
+  { src: "lakers-mockup.jpg",              label: "Lakers Jersey",           cat: "jerseys" },
+  { src: "tampa-bay-mockup.jpg",           label: "Tampa Bay Jersey",        cat: "jerseys" },
+  { src: "viking-team-mockup.jpg",         label: "Viking Team Jersey",      cat: "jerseys" },
+  { src: "jeresey/thumbnail 1-01.png",     label: "Jersey Design 1",         cat: "jerseys" },
+  { src: "jeresey/thumbnail 2-01.png",     label: "Jersey Design 2",         cat: "jerseys" },
+  { src: "jeresey/thumbnail 3-01.png",     label: "Jersey Design 3",         cat: "jerseys" },
+  { src: "jeresey/thumbnail 4-01.png",     label: "Jersey Design 4",         cat: "jerseys" },
+  { src: "jeresey/thumbnail 5-01.png",     label: "Jersey Design 5",         cat: "jerseys" },
+  { src: "jeresey/thumbnail 6-01.png",     label: "Jersey Design 6",         cat: "jerseys" },
+  { src: "jeresey/thumbnail 7-01.png",     label: "Jersey Design 7",         cat: "jerseys" },
+  { src: "jeresey/thumbnail 8-01.png",     label: "Jersey Design 8",         cat: "jerseys" },
+  { src: "jeresey/thumbnail 9-01.png",     label: "Jersey Design 9",         cat: "jerseys" },
+  { src: "jeresey/thumbnail 10-01.png",    label: "Jersey Design 10",        cat: "jerseys" },
+  { src: "jeresey/thumbnail 11-01.png",    label: "Jersey Design 11",        cat: "jerseys" },
+  { src: "jeresey/thumbnail 12-01.png",    label: "Jersey Design 12",        cat: "jerseys" },
+  { src: "jeresey/thumbnail 13-01-01.png", label: "Jersey Design 13",        cat: "jerseys" },
+  { src: "jeresey/blue-mockup.jpg",        label: "Jersey Blue Mockup",      cat: "jerseys" },
+  { src: "jeresey/red-mockup.jpg",         label: "Jersey Red Mockup",       cat: "jerseys" },
+  { src: "jeresey/valhala front 1.png",    label: "Valhalla Front 1",        cat: "jerseys" },
+  { src: "jeresey/valhala front 2.png",    label: "Valhalla Front 2",        cat: "jerseys" },
+  { src: "jeresey/valhala front 3.png",    label: "Valhalla Front 3",        cat: "jerseys" },
+  { src: "jeresey/valhala front 4.png",    label: "Valhalla Front 4",        cat: "jerseys" },
+  { src: "jeresey/valhala front 5.png",    label: "Valhalla Front 5",        cat: "jerseys" },
+  { src: "jeresey/valhala back 1.png",     label: "Valhalla Back 1",         cat: "jerseys" },
+  { src: "jeresey/valhala back 2.png",     label: "Valhalla Back 2",         cat: "jerseys" },
+  { src: "jeresey/valhala back 3.png",     label: "Valhalla Back 3",         cat: "jerseys" },
+  { src: "jeresey/valhala back 4.png",     label: "Valhalla Back 4",         cat: "jerseys" },
+  { src: "jeresey/valhala back 5.png",     label: "Valhalla Back 5",         cat: "jerseys" },
+  { src: "dandan-mockup.jpg",              label: "Dandan Jersey",           cat: "print" },
+  // ── POD Designs ───────────────────────────────────────
+  ...[
+    ["BLACK S2(sweatshirt).png","BLACK S2 Sweatshirt"],
+    ["BLACK women S4(sweatshirt).png","BLACK Women S4 Sweatshirt"],
+    ["Black F2.png","Black F2"],
+    ["Black F3.png","Black F3"],
+    ["Black s2.png","Black S2"],
+    ["black mockups v1.png","Black Mockup V1"],
+    ["Black mockup template.png","Black Mockup Template"],
+    ["DARK GRAY S13.png","Dark Gray S13"],
+    ["DARK RED F6.png","Dark Red F6"],
+    ["F-1 mockup 6.png","F-1 Mockup"],
+    ["F-2-mockup-1.png","F-2 Mockup"],
+    ["F-3 mockup 1.png","F-3 Mockup"],
+    ["F-4 mockup 2.png","F-4 Mockup"],
+    ["F-5 mockup 2.png","F-5 Mockup"],
+    ["F-6-mockup-4.png","F-6 Mockup"],
+    ["F-7 mockup 5.png","F-7 Mockup"],
+    ["GRAY F19.png","Gray F19"],
+    ["MUSTERD F13.png","Mustard F13"],
+    ["NAVY F4.png","Navy F4"],
+    ["NAVY F5.png","Navy F5"],
+    ["RED F8.png","Red F8"],
+    ["RED(brown) F8.png","Red Brown F8"],
+    ["S-2 mockup 1.png","S-2 Mockup"],
+    ["WHITE F14.png","White F14"],
+    ["WHITE F16.png","White F16"],
+    ["White F17.png","White F17"],
+    ["White s20.png","White S20"],
+    ["White s21.png","White S21"],
+    ["1 (1).png","POD Design 1A"],
+    ["1 (2).png","POD Design 1B"],
+    ["1 (4).png","POD Design 1C"],
+    ["5.png","POD Design 5"],
+    ["bookmark mockup 1.png","Bookmark Mockup"],
+    ["bookmark v1 mockup 1.png","Bookmark V1"],
+    ["bookmark v2 mockup 3.png","Bookmark V2"],
+    ["bookmark v3 mockup 1.png","Bookmark V3"]
+  ].map(([file, label]) => ({
+    src: POD_BASE + file,
+    label,
+    cat: "pod"
+  })),
+  // ── AOP Designs ───────────────────────────────────────
+  ...[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
+      21,22,23,24,25,26,27,28,29,30].map(n => ({
+    src: POD_BASE + `AOP/${n}.jpg`,
+    label: `AOP Design ${n}`,
+    cat: "pod"
+  }))
+];
+
+// Brand identity data
+const brandProjects = [
+  { name: "VÉON WEAR", folder: "brand identity/VÉON WEAR/thumbnail/", cover: "1-01.png",
+    images: ["1-01.png","2-01.png","3-01.png","4-01.png","5-01.png","6-01.png","7-01.png","8-01.png","9-01.png","10.png","11.png","12.png","13.png","14.png","15.png","16.png","17.png","18.png","19.png","20.png","21.png","22.png","23.png","24.png","25.png"] },
+  { name: "Nextrac", folder: "brand identity/Nextrac/thumbnail/", cover: "1-01.png",
+    images: ["1-01.png","2-01.png","3-01.png","4-01.png","5-01.png","6-01.png","7-01.png","8-01.png","9-01.png","10-01.png","11-01.png","12-01.png","13-01.png","14-01.png","15-01.png","16-01.png","17-01.png","18-01.png","19-01.png","20-01.png","21-01.png","22-01.png","23-01.png","24-01.png","25-01.png","26-01.png","27-01.png","28-01.png","29-01.png","30-01.png","31-01.png","32-01.png","33-01.png","34-01.png","35-01.png","36-01.png","37-01.png","38-01.png","39-01.png","40-01.png","41-01.png","42-01.png","43-01.png"] },
+  { name: "cccouture", folder: "brand identity/cccouture/thumbnail/", cover: "1-01.png",
+    images: ["1-01.png","2-01.png","3-01.png","4-01.png","5-01.png","6-01.png","7-01.png","8-01.png","9-01.png","10-01.png","11-01.png","12-01.png","13-01.png","14.png","15.png","16.png","17.png","18.png","19.png","20.png","21.png","22.png"] },
+  { name: "Solvexa", folder: "brand identity/solvexa/thumbnail/", cover: "1-01.png",
+    images: ["1-01.png","2-01.png","3-01.png","4-01.png","5-01.png","6-01.png","7-01.png","8-01.png","9-01.png","10-01.png","11-01.png","12-01.png","13-01.png","14-01.png","15.png","16.png","17.png","18.png","19.png","20.png","21.png","22.png","23.png","24.png","25.png","26.png","27.png","28.png","29.png","30.png","31.png","32.png","33.png","34.png","35.png","43.png"] },
+  { name: "Sparka", folder: "brand identity/sparka/thumbnail/", cover: "1-01.png",
+    images: ["1-01.png","2-01.png","3-01.png","4-01.png","5-01.png","6-01.png","7-01.png","8-01.png","9-01.png","10-01.png","11-01.png","12-01.png","13-01.png","14-01.png","15-01.png","16-01.png","17-01.png","18.png","19.png","20.png","21.png","22.png","23.png","24.png","25.png","26.png","27.png","28.png","29.png","30.png","31.png","32-01.png"] },
+  { name: "Void", folder: "brand identity/void/thumbnail/", cover: "void page 1-01.jpg",
+    images: ["void page 1-01.jpg","void page 2-01.jpg","void page 3-01.jpg","void page 4-01.jpg","void page 5-01.jpg","void page 6-01.jpg","void page 7-01.jpg","void page 8-01.jpg","void page 9-01.jpg","void page 10-01.jpg","void page 11-01.jpg","void page 12-01.jpg","void page 13-01.jpg","void page 14-01.jpg","void page 15-01.jpg","void page 16-01.jpg","void page 17-01.jpg","void page 18-01.jpg","void page 19-01.jpg","void page 20-01.jpg","void page 21-01.jpg"] },
+  { name: "Voltex", folder: "brand identity/voltex/thumbnail/", cover: "1-01.png",
+    images: ["1-01.png","2-01.png","3-01.png","4-01.png","5-01.png","6-01.png","7-01.png","8-01.png","9-01.png","10.png","11.png","12.png","13.png","14.png","15.png","16.png","17.png","18.png","19.png","20.png","21.png","22.png"] }
+];
+
+// Logo data
+const logoProjects = [
+  { name: "Swifthawk", folder: "logo design/swifthawk/thumbnail/", cover: "1.jpg",
+    images: ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg","8.jpg","9.png","10.jpg","11.jpg","12.jpg","13.jpg","14.jpg"] },
+  { name: "Trendova", folder: "logo design/trendova/thumbnail/", cover: "1.jpg",
+    images: ["1.jpg","2.png","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg","8.jpg","9.jpg","10.jpg","11.jpg","12.jpg","13.jpg"] },
+  { name: "Hopebridge", folder: "logo design/hopebridge/thumbnail/", cover: "1-01.png",
+    images: ["1-01.png","2-01.png","3.png","4-01.png","5-01.png","6-01.png","7-01.png","8.png","9.png","10.png","11.png","12.png"] },
+  { name: "Vasteras", folder: "logo design/vasteras/thumbnail/", cover: "1.jpg",
+    images: ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg","8.jpg","9.jpg","10.jpg","11.jpg","12.jpg","13.jpg","14.jpg","15.jpg","16.jpg"] },
+  { name: "Veltra Vibe", folder: "logo design/veltra vibe/thumbnail/", cover: "1.jpg",
+    images: ["1.jpg","2.jpg","3.png","4.jpg","5.jpg","6.jpg","7.jpg","8.jpg","9.jpg","10.jpg","11.jpg","12.jpg","13.jpg","14.jpg","15.jpg","16.jpg"] },
+  { name: "Snail", folder: "logo design/snail/snail/", cover: "1.png",
+    images: ["1.png","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg","8.jpg","9.jpg","10.jpg"] }
+];
+
+// ── INTERSECTION OBSERVER LAZY LOADER ────────────────
+const imgObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const img = entry.target;
+      if (img.dataset.src) {
+        img.src = img.dataset.src;
+        delete img.dataset.src;
+        imgObserver.unobserve(img);
+      }
+    }
+  });
+}, { rootMargin: '300px' });
+
+function observeImg(img) {
+  if (img.dataset.src) imgObserver.observe(img);
+}
+
+// ── RENDER TECH PACKS ─────────────────────────────────
+const tpGrid = document.getElementById('tp-grid');
+const tpNoResults = document.createElement('div');
+tpNoResults.className = 'tp-no-results';
+tpNoResults.textContent = 'No tech packs match your search.';
+tpGrid.appendChild(tpNoResults);
+
+const tpCards = [];
+techPacks.forEach((tp, idx) => {
+  const card = document.createElement('div');
+  card.className = 'tp-card';
+  card.dataset.name = tp.name.toLowerCase();
+  card.dataset.cat = tp.category.toLowerCase();
+  // Use data-src for lazy loading, set a blank placeholder initially
+  card.innerHTML = `
+    <img data-src="${tp.folder}${tp.cover}" alt="${tp.name}" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+    <div class="tp-overlay">
+      <div class="tp-cat">${tp.category}</div>
+      <div class="tp-name">${tp.name}</div>
+      <div class="tp-pages">${tp.pages.length} pages</div>
+    </div>
+    <button class="tp-view-btn">View Pack</button>
+  `;
+  card.addEventListener('click', () => openTechPack(idx));
+  tpGrid.insertBefore(card, tpNoResults);
+  tpCards.push(card);
+  observeImg(card.querySelector('img'));
+});
+
+// ── TP SEARCH ─────────────────────────────────────────
+const tpSearchInput = document.getElementById('tp-search');
+const tpSearchCount = document.getElementById('tp-search-count');
+
+function updateTPSearch() {
+  const q = tpSearchInput.value.toLowerCase().trim();
+  let visible = 0;
+  tpCards.forEach(card => {
+    const match = !q || card.dataset.name.includes(q) || card.dataset.cat.includes(q);
+    card.style.display = match ? '' : 'none';
+    if (match) visible++;
+  });
+  tpSearchCount.textContent = q ? `${visible} result${visible !== 1 ? 's' : ''}` : `${techPacks.length} packs`;
+  tpNoResults.style.display = visible === 0 ? 'block' : 'none';
+}
+tpSearchInput.addEventListener('input', updateTPSearch);
+updateTPSearch();
+
+// ── RENDER CLOTHING ───────────────────────────────────
+const clothingGrid = document.getElementById('clothing-grid');
+const CLOTHING_PAGE_SIZE = 24;
+let clothingFilter = 'all';
+let clothingPage = 0;
+const loadMoreBtn = document.getElementById('load-more-btn');
+
+function getFilteredClothing() {
+  return clothingItems.filter(item => clothingFilter === 'all' || item.cat === clothingFilter);
+}
+
+function renderClothingBatch() {
+  const filtered = getFilteredClothing();
+  const start = clothingPage * CLOTHING_PAGE_SIZE;
+  const batch = filtered.slice(start, start + CLOTHING_PAGE_SIZE);
+  // Find the real indices in clothingItems for lightbox
+  batch.forEach(item => {
+    const realIdx = clothingItems.indexOf(item);
+    const el = document.createElement('div');
+    el.className = 'clothing-item';
+    el.dataset.cat = item.cat;
+    el.innerHTML = `
+      <img data-src="${item.src}" alt="${item.label}" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+      <div class="clothing-item-label">${item.label}</div>
+    `;
+    el.addEventListener('click', () => openLightboxGroup(clothingItems, realIdx));
+    clothingGrid.appendChild(el);
+    observeImg(el.querySelector('img'));
+  });
+  clothingPage++;
+  const totalShown = clothingPage * CLOTHING_PAGE_SIZE;
+  loadMoreBtn.disabled = totalShown >= filtered.length;
+  loadMoreBtn.style.display = filtered.length <= CLOTHING_PAGE_SIZE ? 'none' : '';
+}
+
+function resetClothingGrid() {
+  clothingGrid.innerHTML = '';
+  clothingPage = 0;
+  renderClothingBatch();
+}
+
+// Filter tabs
+document.querySelectorAll('.filter-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    clothingFilter = tab.dataset.filter;
+    resetClothingGrid();
+  });
+});
+
+loadMoreBtn.addEventListener('click', renderClothingBatch);
+resetClothingGrid();
+
+// ── RENDER BRAND ──────────────────────────────────────
+const brandGrid = document.getElementById('brand-grid');
+brandProjects.forEach((bp, idx) => {
+  const card = document.createElement('div');
+  card.className = 'brand-card';
+  card.innerHTML = `
+    <img class="brand-cover" data-src="${bp.folder}${bp.cover}" alt="${bp.name}"
+      src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+    <div class="brand-info">
+      <div>
+        <div class="brand-title">${bp.name}</div>
+        <div class="brand-page-count">${bp.pages} pages</div>
+      </div>
+      <div class="brand-arrow">→</div>
+    </div>
+  `;
+  card.addEventListener('click', () => openBrandViewer(idx));
+  brandGrid.appendChild(card);
+  observeImg(card.querySelector('img'));
+});
+
+// ── RENDER LOGOS ──────────────────────────────────────
+const logoGrid = document.getElementById('logo-grid');
+logoProjects.forEach((lp, idx) => {
+  const card = document.createElement('div');
+  card.className = 'logo-card';
+  card.innerHTML = `
+    <img data-src="${lp.folder}${lp.cover}" alt="${lp.name}"
+      src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+    <div class="logo-overlay">
+      <div class="logo-type">Logo Design</div>
+      <div class="logo-name">${lp.name}</div>
+    </div>
+  `;
+  card.addEventListener('click', () => openLogoViewer(idx));
+  logoGrid.appendChild(card);
+  observeImg(card.querySelector('img'));
+});
+
+// ── TECH PACK MODAL ───────────────────────────────────
+let currentTP = null;
+let currentTPPage = 0;
+
+function openTechPack(idx) {
+  currentTP = techPacks[idx];
+  currentTPPage = 0;
+  document.getElementById('modal-tp-name').textContent = currentTP.name;
+  document.getElementById('modal-tp-cat').textContent = '  —  ' + currentTP.category;
+  buildSidebar();
+  showTPPage(0);
+  document.getElementById('tp-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function buildSidebar() {
+  const sidebar = document.getElementById('modal-sidebar');
+  sidebar.innerHTML = '';
+  currentTP.pages.forEach((page, i) => {
+    const thumb = document.createElement('img');
+    thumb.className = 'modal-thumb' + (i === 0 ? ' active' : '');
+    thumb.src = currentTP.folder + page.file;
+    thumb.loading = 'lazy';
+    thumb.alt = page.label;
+    thumb.addEventListener('click', () => showTPPage(i));
+    const label = document.createElement('div');
+    label.className = 'modal-thumb-label';
+    label.textContent = (i+1).toString().padStart(2,'0');
+    sidebar.appendChild(thumb);
+    sidebar.appendChild(label);
+  });
+}
+
+function showTPPage(idx) {
+  if (!currentTP) return;
+  currentTPPage = idx;
+  const page = currentTP.pages[idx];
+  const img = document.getElementById('modal-current-img');
+  img.style.opacity = '0';
+  setTimeout(() => {
+    img.src = currentTP.folder + page.file;
+    img.onload = () => { img.style.opacity = '1'; };
+  }, 80);
+  document.getElementById('modal-page-indicator').textContent = `${idx + 1} / ${currentTP.pages.length}`;
+  document.getElementById('modal-page-label').textContent = page.label;
+  document.querySelectorAll('.modal-thumb').forEach((t,i) => t.classList.toggle('active', i === idx));
+  const sidebar = document.getElementById('modal-sidebar');
+  const thumb = sidebar.querySelectorAll('.modal-thumb')[idx];
+  if (thumb) thumb.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+}
+
+function tpNavPrev() { if (currentTP && currentTPPage > 0) showTPPage(currentTPPage - 1); }
+function tpNavNext() { if (currentTP && currentTPPage < currentTP.pages.length - 1) showTPPage(currentTPPage + 1); }
+
+document.getElementById('modal-prev').addEventListener('click', tpNavPrev);
+document.getElementById('modal-next').addEventListener('click', tpNavNext);
+document.getElementById('modal-prev2').addEventListener('click', tpNavPrev);
+document.getElementById('modal-next2').addEventListener('click', tpNavNext);
+document.getElementById('modal-close-btn').addEventListener('click', () => {
+  document.getElementById('tp-modal').classList.remove('open');
+  document.body.style.overflow = '';
+});
+
+// ── LIGHTBOX ──────────────────────────────────────────
+let lbImages = [];
+let lbIndex = 0;
+
+function openLightboxGroup(items, idx) {
+  lbImages = items.map(i => i.src);
+  lbIndex = idx;
+  showLB();
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function openBrandViewer(idx) {
+  const bp = brandProjects[idx];
+  lbImages = bp.images.map(f => bp.folder + f);
+  lbIndex = 0;
+  showLB();
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function openLogoViewer(idx) {
+  const lp = logoProjects[idx];
+  lbImages = lp.images.map(f => lp.folder + f);
+  lbIndex = 0;
+  showLB();
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function showLB() {
+  document.getElementById('lb-img').src = lbImages[lbIndex];
+}
+
+document.getElementById('lb-prev').addEventListener('click', () => {
+  lbIndex = (lbIndex - 1 + lbImages.length) % lbImages.length;
+  showLB();
+});
+document.getElementById('lb-next').addEventListener('click', () => {
+  lbIndex = (lbIndex + 1) % lbImages.length;
+  showLB();
+});
+document.getElementById('lightbox-close').addEventListener('click', () => {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+});
+document.getElementById('lightbox').addEventListener('click', (e) => {
+  if (e.target === document.getElementById('lightbox')) {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
+
+// ══════════════════════════════════════════════════════
+// ANIMATION SYSTEM
+// ══════════════════════════════════════════════════════
+
+// ── 1. LOAD BAR ───────────────────────────────────────
+(function() {
+  const bar = document.getElementById('load-bar');
+  let prog = 0;
+  const tick = setInterval(() => {
+    prog += Math.random() * 18;
+    if (prog >= 90) { clearInterval(tick); prog = 90; }
+    bar.style.width = prog + '%';
+  }, 80);
+  window.addEventListener('load', () => {
+    clearInterval(tick);
+    bar.style.width = '100%';
+    setTimeout(() => { bar.style.opacity = '0'; setTimeout(() => bar.remove(), 400); }, 300);
+  });
+})();
+
+// ── 2. CUSTOM CURSOR ──────────────────────────────────
+(function() {
+  const dot  = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+  if (!dot || !ring) return;
+  // Check if pointer is fine (mouse, not touch)
+  if (!window.matchMedia('(pointer: fine)').matches) {
+    dot.remove(); ring.remove(); return;
+  }
+  let mx = -200, my = -200, rx = -200, ry = -200;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  (function rafLoop() {
+    dot.style.left  = mx + 'px';
+    dot.style.top   = my + 'px';
+    rx += (mx - rx) * 0.14;
+    ry += (my - ry) * 0.14;
+    ring.style.left = rx + 'px';
+    ring.style.top  = ry + 'px';
+    requestAnimationFrame(rafLoop);
+  })();
+  const hoverEls = 'a, button, .tp-card, .clothing-item, .brand-card, .logo-card, .filter-tab, .about-cta';
+  document.addEventListener('mouseover', e => {
+    if (e.target.closest(hoverEls)) ring.classList.add('hovered');
+  });
+  document.addEventListener('mouseout', e => {
+    if (e.target.closest(hoverEls)) ring.classList.remove('hovered');
+  });
+  document.addEventListener('mouseleave', () => { dot.style.opacity='0'; ring.style.opacity='0'; });
+  document.addEventListener('mouseenter', () => { dot.style.opacity='1'; ring.style.opacity='1'; });
+})();
+
+// ── 3. SCROLL-REVEAL OBSERVER ─────────────────────────
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { rootMargin: '0px 0px -60px 0px', threshold: 0.08 });
+
+function revealAll() {
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .section-label').forEach(el => {
+    revealObserver.observe(el);
+  });
+}
+
+// ── 4. STAGGER HELPER ─────────────────────────────────
+function staggerReveal(els, baseDelay = 0, step = 80) {
+  els.forEach((el, i) => {
+    el.classList.add('reveal');
+    el.style.transitionDelay = (baseDelay + i * step) + 'ms';
+    revealObserver.observe(el);
+  });
+}
+
+// ── 5. STATS COUNTER ──────────────────────────────────
+function animateCounter(el, target, suffix = '') {
+  const isPlus = suffix.includes('+');
+  const num = parseInt(target);
+  let start = 0;
+  const duration = 1200;
+  const startTime = performance.now();
+  el.classList.add('counting');
+  const update = (now) => {
+    const elapsed = now - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = Math.round(eased * num);
+    el.textContent = current + (isPlus ? '+' : '') + (suffix.replace('+',''));
+    if (progress < 1) requestAnimationFrame(update);
+    else { el.classList.remove('counting'); el.textContent = target; }
+  };
+  requestAnimationFrame(update);
+}
+
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      document.querySelectorAll('.about-stat-num').forEach(el => {
+        const raw = el.textContent.trim();
+        animateCounter(el, raw, '');
+      });
+      statsObserver.disconnect();
+    }
+  });
+}, { threshold: 0.5 });
+
+const statsEl = document.querySelector('.about-stats');
+if (statsEl) statsObserver.observe(statsEl);
+
+// ── 6. NAV ACTIVE SECTION HIGHLIGHT ──────────────────
+const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+const sections = Array.from(navLinks).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+const navObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      navLinks.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+sections.forEach(s => navObs.observe(s));
+
+// ── 7. APPLY REVEAL CLASSES TO STATIC ELEMENTS ────────
+(function applyRevealClasses() {
+  // Section labels & titles
+  document.querySelectorAll('.section-label').forEach(el => el.classList.add('reveal'));
+  document.querySelectorAll('.section-title').forEach(el => {
+    el.classList.add('reveal');
+    el.style.transitionDelay = '120ms';
+  });
+
+  // Services cards — staggered
+  staggerReveal(document.querySelectorAll('.service-card'), 0, 70);
+
+  // Already-rendered grids — stagger existing items
+  document.querySelectorAll('.tp-card').forEach((el, i) => {
+    el.classList.add('reveal');
+    el.style.transitionDelay = (i * 55) + 'ms';
+    revealObserver.observe(el);
+  });
+  document.querySelectorAll('.brand-card').forEach((el, i) => {
+    el.classList.add('reveal');
+    el.style.transitionDelay = (i * 55) + 'ms';
+    revealObserver.observe(el);
+  });
+  document.querySelectorAll('.logo-card').forEach((el, i) => {
+    el.classList.add('reveal');
+    el.style.transitionDelay = (i * 55) + 'ms';
+    revealObserver.observe(el);
+  });
+  document.querySelectorAll('.clothing-item').forEach((el, i) => {
+    el.classList.add('reveal');
+    el.style.transitionDelay = (i * 35) + 'ms';
+    revealObserver.observe(el);
+  });
+
+  // About section
+  const aboutPhoto = document.querySelector('.about-photo-wrap');
+  const aboutText  = document.querySelector('.about-text');
+  if (aboutPhoto) aboutPhoto.classList.add('reveal-left');
+  if (aboutText)  { aboutText.classList.add('reveal-right'); aboutText.style.transitionDelay = '150ms'; }
+
+  // Stats
+  document.querySelectorAll('.about-stat').forEach((el, i) => {
+    el.classList.add('reveal');
+    el.style.transitionDelay = (100 + i * 80) + 'ms';
+  });
+
+  // Skills + CTA in about
+  const skillsEl = document.querySelector('.about-skills');
+  const ctaEl    = document.querySelector('.about-cta');
+  if (skillsEl) { skillsEl.classList.add('reveal'); skillsEl.style.transitionDelay = '200ms'; }
+  if (ctaEl)    { ctaEl.classList.add('reveal');    ctaEl.style.transitionDelay = '300ms'; }
+
+  // CTA section
+  document.querySelectorAll('#cta > *').forEach((el, i) => {
+    el.classList.add('reveal');
+    el.style.transitionDelay = (i * 100) + 'ms';
+  });
+
+  revealAll();
+})();
+
+// ── 8. STAGGER NEWLY RENDERED GRID ITEMS ──────────────
+(function() {
+  // Clothing grid — stagger on each new batch
+  const _cg = document.getElementById('clothing-grid');
+  if (_cg) {
+    new MutationObserver(() => {
+      _cg.querySelectorAll('.clothing-item:not(.reveal)').forEach((el, i) => {
+        el.classList.add('reveal');
+        el.style.transitionDelay = (i * 35) + 'ms';
+        revealObserver.observe(el);
+      });
+    }).observe(_cg, { childList: true });
+  }
+  // tp / brand / logo grids
+  ['tp-grid','brand-grid','logo-grid'].forEach(id => {
+    const _g = document.getElementById(id);
+    if (!_g) return;
+    new MutationObserver(() => {
+      _g.querySelectorAll('.tp-card:not(.reveal),.brand-card:not(.reveal),.logo-card:not(.reveal)').forEach((el, i) => {
+        el.classList.add('reveal');
+        el.style.transitionDelay = (i * 55) + 'ms';
+        revealObserver.observe(el);
+      });
+    }).observe(_g, { childList: true, subtree: true });
+  });
+})();
+
+// ── KEYBOARD NAVIGATION ───────────────────────────────
+document.addEventListener('keydown', (e) => {
+  const tpOpen = document.getElementById('tp-modal').classList.contains('open');
+  const lbOpen = document.getElementById('lightbox').classList.contains('open');
+  if (tpOpen) {
+    if (e.key === 'ArrowLeft') tpNavPrev();
+    if (e.key === 'ArrowRight') tpNavNext();
+    if (e.key === 'Escape') {
+      document.getElementById('tp-modal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  }
+  if (lbOpen) {
+    if (e.key === 'ArrowLeft') { lbIndex = (lbIndex - 1 + lbImages.length) % lbImages.length; showLB(); }
+    if (e.key === 'ArrowRight') { lbIndex = (lbIndex + 1) % lbImages.length; showLB(); }
+    if (e.key === 'Escape') {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  }
+});
+
+</script>
+</body>
+</html>
